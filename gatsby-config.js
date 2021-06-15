@@ -42,12 +42,6 @@ module.exports = {
     },
     plugins: [
         {
-            resolve: '@mkitio/gatsby-theme-password-protect',
-            options: {
-              password: password // delete or `undefined` to disable password protection
-            }
-        },
-        {
             resolve: `gatsby-plugin-google-gtag`,
             options: {
               // You can add multiple tracking ids and a pageview event will be fired for all of them.
