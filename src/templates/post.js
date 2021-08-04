@@ -24,7 +24,7 @@ const Post = ({ data, location }) => {
     const post = data.ghostPost;
 
     function addTargetBlank() {
-        const allPostLinks = Array.from(document.querySelectorAll(".post-body > section a[href^='https:']"));
+        const allPostLinks = Array.from(document.querySelectorAll(".post-body a[href^='https:']"));
         allPostLinks.forEach(el => el.setAttribute('target', '_blank'));
     }
 
