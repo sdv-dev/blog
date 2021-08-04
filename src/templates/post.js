@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { graphql, Link } from "gatsby";
 import { Helmet } from "react-helmet";
@@ -22,6 +22,13 @@ import config from "../utils/siteConfig"
  */
 const Post = ({ data, location }) => {
     const post = data.ghostPost;
+
+    function addTargetBlank() {
+        const allPostLinks = Array.from(document.querySelectorAll(".post-body > section a[href^='https:']"));
+        allPostLinks.forEach(el => el.setAttribute('target', '_blank'));
+    }
+
+    useEffect( addTargetBlank, [])
 
     return (
         <>
@@ -133,7 +140,7 @@ const Post = ({ data, location }) => {
                         
                        
                         <div className="post">
-                            <section
+                            <section className="post-body"
                                 dangerouslySetInnerHTML={{ __html: post.html }}
                             />
                             <div className="">
