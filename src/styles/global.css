@@ -66,3 +66,21 @@
     @apply inline-block;
   }
 }
+
+code[class*=language-], pre[class*=language-] {
+  font-size: 13px !important;
+}
+
+pre {
+  background: #272822 !important;
+  border-radius: 3.9px;
+  @apply mb-6 p-4 !important;
+}
+
+code {
+  @apply px-1 py-px !important rounded-sm;
+  background: #272822 !important;
+  font-size: 13px;
+  color: #f8f8f2;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+}

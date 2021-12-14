@@ -14,12 +14,17 @@ import ProgressBar from "react-scroll-progress-bar";
 
 import config from "../utils/siteConfig"
 
+import Prism from "prismjs";
+import "prismjs/components/prism-python";
+import "prismjs/themes/prism-okaidia.css";
+
 /**
  * Single post view (/:slug)
  *
  * This file renders a single post and loads all the content.
  *
  */
+
 const Post = ({ data, location }) => {
     const post = data.ghostPost;
 
@@ -29,6 +34,10 @@ const Post = ({ data, location }) => {
     }
 
     useEffect( addTargetBlank, [])
+
+    useEffect(() => {
+        Prism.highlightAll();
+      }, []);
 
     return (
         <>
