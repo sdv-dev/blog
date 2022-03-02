@@ -22,7 +22,9 @@ import Logo from "../../../assets/sdv-blog-logo.svg";
  * styles, and meta data for each page.
  *
  */
-const PostDefaultLayout = ({ data, children, bodyClass, isPost }) => {
+
+
+const AuthorLayout = ({ data, children, bodyClass, isPost }) => {
     const site = data.allGhostSettings.edges[0].node;
     const twitterUrl = site.twitter
         ? `https://twitter.com/${site.twitter.replace(/^@/, ``)}`
@@ -64,19 +66,16 @@ const PostDefaultLayout = ({ data, children, bodyClass, isPost }) => {
 
                     <main className="">
                         {children}
-                        { isPost ? (<div className="container mx-auto">
-                            <MoreArticles />
-                        </div>) : ''}
                     </main>
                 </div>
-                <Cta />
+                {/* <Cta /> */}
                 <Footer/>
                   </div>
         </>
     );
 };
 
-PostDefaultLayout.propTypes = {
+AuthorLayout.propTypes = {
     children: PropTypes.node.isRequired,
     bodyClass: PropTypes.string,
     isHome: PropTypes.bool,
@@ -86,10 +85,10 @@ PostDefaultLayout.propTypes = {
     }).isRequired,
 };
 
-const PostDefaultLayoutSettingsQuery = (props) => (
+const AuthorLayoutSettingsQuery = (props) => (
     <StaticQuery
         query={graphql`
-            query GhostSettingsArticle {
+            query GhostSettingsAuthor {
                 allGhostSettings {
                     edges {
                         node {
@@ -124,8 +123,8 @@ const PostDefaultLayoutSettingsQuery = (props) => (
                 }
             }
         `}
-        render={(data) => <PostDefaultLayout data={data} {...props} />}
+        render={(data) => <AuthorLayout data={data} {...props} />}
     />
 );
 
-export default PostDefaultLayoutSettingsQuery;
+export default AuthorLayoutSettingsQuery;

@@ -20,7 +20,10 @@ import AllArticlesWrap from "../components/AllArticlesWrap";
 const Index = ({ data, location, pageContext }) => {
     const posts = data.allGhostPost.edges;
     const tags = data.allGhostTag.edges;
-    const featured = data.featured !== undefined ? data.featured.edges[0] : data.allGhostPost.edges[0];
+
+    const allPosts = posts.map( i => i.node )
+    
+    const featuredPost = allPosts.filter( i => i.featured === true )[0]
 
     return (
         <>
@@ -33,7 +36,7 @@ const Index = ({ data, location, pageContext }) => {
                                 Featured Article
                             </h2>
                             <FeaturedArticleWrap>
-                                <FeaturedArticle post={featured.node} />
+                                <FeaturedArticle post={featuredPost} />
                             </FeaturedArticleWrap>
                         </>
                     ) : (
@@ -116,8 +119,14 @@ export const pageQuery = graphql`
                 url
                 }
                 primary_author {
-                name
-                profile_image
+                    name
+                    slug
+                    bio
+                    # email
+                    profile_image
+                    twitter
+                    facebook
+                    website
                 }
                 meta_description
                 meta_title
