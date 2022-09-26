@@ -38,6 +38,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                 <style type="text/css">{`${site.codeinjection_styles}`}</style>
                 <body className={bodyClass} />
                 <link rel="icon" type="image/png" href={favicon} sizes="16x16" />
+                <meta http-equiv="refresh" content="0; url=https://datacebo.com/blog/"/>
             </Helmet>
 
             <div className="overflow-x-hidden">
